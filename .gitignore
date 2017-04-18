@@ -1,10 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-/Data/
-.idea/BDA_SS17.iml
-.idea/desktop.ini
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/workspace.xml
-.ipynb_checkpoints/
+.idea/*
 desktop.ini
+/Data
