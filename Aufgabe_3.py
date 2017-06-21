@@ -45,7 +45,7 @@ df_groupedchat_win.drop('rad_win',axis=1, inplace=True)
 df_groupedchat_lose.drop('rad_win',axis=1, inplace=True)
 
 df_groupedchat_win['MessagesPerMinute'] = df_groupedchat_win['key']/(df_groupedchat_win['duration']/60)
-df_groupedchat_win['Bereiche Duration'] = pd.cut(df_groupedchat_win['duration'],[x*300 for x in range(21)])
+df_groupedchat_win['Bereiche Duration'] = pd.cut(df_groupedchat_win['duration'],[x*300 for x in range(21)], labels=[x*5 for x in range(1,21)])
 print("Groupedchat")
 print(df_groupedchat.head())
 print("WIN only")
@@ -54,9 +54,16 @@ print("LOSE only")
 print(df_groupedchat_lose.head())
 print(df_groupedchat_win.groupby('Bereiche Duration').count())
 
-sns.pointplot(
-    x='duration',
+sns.stripplot(
+    x='Bereiche Duration',
     y='nachlänge',
     data = df_groupedchat_win)\
-    .get_figure()\
-    -savefig('plot-png')
+    .get_figure().savefig('plot-png')
+
+
+sns.barplot(
+    x='Bereiche Duration',
+    y='nachlänge',
+    data = df_groupedchat_win)\
+    .get_figure().savefig('plot-png')
+
