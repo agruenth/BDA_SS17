@@ -19,25 +19,44 @@ df_match.drop(['start_time',
     'negative_votes',
     'positive_votes',
     'cluster'],
-    axis=1)
-
+    axis=1,
+    inplace=True)
 # Get Chat Data
 df_chat = pd.read_csv('data/chat.csv', memory_map=True)
 # Drop unneeded cols
-df_chat.drop('unit', axis=1)
+df_chat.drop('unit', axis=1, inplace=True)
 
 # Create 
-df_chat['team'] = pd.cut(df_chat['slot'],[0,5],labels=[True, False])
+df_chat['team'] = pd.cut(df_chat['slot'],[0, 5, 10],labels=[True, False])
 df_chat['nachlänge'] = df_chat['key'].str.len()
-df_groupedchat = df_chat[['match_id', 'team', 'key']]
-    .groupby(['match_id', 'team'])
+df_groupedchat = df_chat[['match_id', 'team', 'key']]\
+    .groupby(['match_id', 'team'])\
     .count()
-df_groupedchat = df_chat[['match_id', 'team', 'nachlänge']]
-    groupby(['match_id', 'team'])
+df_groupedchat['nachlänge'] = df_chat[['match_id', 'team', 'nachlänge']]\
+    .groupby(['match_id', 'team'])\
     .sum()
+df_groupedchat['avglength'] = df_groupedchat['nachlänge']/df_groupedchat['key']
+df_groupedchat['match_id'] = [x[0] for x in list(df_groupedchat.index.values)]
+df_groupedchat['rad_win'] = [x[1] for x in list(df_groupedchat.index.values)]
+df_groupedchat = df_groupedchat.merge(df_match, on='match_id')
+df_groupedchat_win = df_groupedchat[df_groupedchat['rad_win']==df_groupedchat['radiant_win']]
+df_groupedchat_lose = df_groupedchat[df_groupedchat['rad_win']!=df_groupedchat['radiant_win']]
+df_groupedchat_win.drop('rad_win',axis=1, inplace=True)
+df_groupedchat_lose.drop('rad_win',axis=1, inplace=True)
 
-# Adding Total Messages/ match
-df_match['Total_Messages'] = df_chat[['match_id','key']]
-    .groupby('match_id')
-    .count()
+df_groupedchat_win['MessagesPerMinute'] = df_groupedchat_win['key']/(df_groupedchat_win['duration']/60)
+df_groupedchat_win['Bereiche Duration'] = pd.cut(df_groupedchat_win['duration'],[x*300 for x in range(21)])
+print("Groupedchat")
+print(df_groupedchat.head())
+print("WIN only")
+print(df_groupedchat_win.head())
+print("LOSE only")
+print(df_groupedchat_lose.head())
+print(df_groupedchat_win.groupby('Bereiche Duration').count())
 
+sns.pointplot(
+    x='duration',
+    y='nachlänge',
+    data = df_groupedchat_win)\
+    .get_figure()\
+    -savefig('plot-png')
