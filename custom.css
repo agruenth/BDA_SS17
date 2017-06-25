@@ -1,7 +1,38 @@
 body{
-background-size: 1024px;
+/*background-size: 1024px;
 background-color: #F7F7F7;
 background-image:url('Images/background.jpg');
 background-repeat:no-repeat;
 background-position: right bottom;
+color: white; !important*/
+background-color: black;
+}
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+	opacity:0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+div.reveal.linear{
+	overflow-y: hidden;
+}
+
+div.output_html table{
+	background: rgba(100,100,100,0.5)
+}
+
+div.output_png img{
+	background-color:white;
 }
