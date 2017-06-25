@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11825,8 +11854,7 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11834,8 +11862,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11843,8 +11870,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11944,8 +11970,7 @@ a.anchor-link {
 </div>
 
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11953,8 +11978,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12028,8 +12052,7 @@ a.anchor-link {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12050,8 +12073,7 @@ a.anchor-link {
 </div>
 
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12059,8 +12081,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12070,7 +12091,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -12080,6 +12101,8 @@ a.anchor-link {
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12087,8 +12110,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12098,7 +12120,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ccc</span><span class="p">(</span><span class="n">crosstab</span><span class="p">):</span>
@@ -12115,8 +12137,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12126,7 +12147,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_player</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/players.csv&#39;</span><span class="p">,</span> <span class="n">memory_map</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -12140,8 +12161,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12151,7 +12171,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_chat</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
@@ -12168,7 +12188,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_match</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
@@ -12193,7 +12213,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_player</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
@@ -12269,8 +12289,7 @@ a.anchor-link {
 </div>
 
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12278,8 +12297,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12289,7 +12307,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_match</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12303,7 +12321,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[53]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[50]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12373,7 +12395,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_match</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -12387,7 +12409,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[54]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[51]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12464,8 +12490,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12475,7 +12500,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_player</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12489,7 +12514,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[52]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12589,7 +12618,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_player</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -12603,7 +12632,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[53]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12734,8 +12767,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12745,7 +12777,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_chat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12759,7 +12791,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[57]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[54]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12829,7 +12865,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_chat</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -12843,7 +12879,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[58]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[55]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12920,8 +12960,7 @@ a.anchor-link {
 </div>
 
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12929,8 +12968,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12940,7 +12978,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">df_match</span>
@@ -12953,8 +12991,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12964,7 +13001,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Spalten umbenennen</span>
@@ -12978,8 +13015,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12989,7 +13025,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Nachrichtenlänge für jede Nachricht</span>
@@ -13003,8 +13039,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13012,8 +13047,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13023,7 +13057,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">groupedchat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13037,7 +13071,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[86]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[60]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -13062,7 +13100,7 @@ a.anchor-link {
       <th>Team</th>
       <th>AnzahlNachrichten</th>
       <th>NachrichtenLängeGesamt</th>
-      <th>DurchchschnittlicheLänge</th>
+      <th>DurchschnittlicheLänge</th>
       <th>Spieldauer</th>
       <th>Gewinner</th>
       <th>NachrichtenProMinute</th>
@@ -13147,8 +13185,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13156,8 +13193,7 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13168,7 +13204,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ccc</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">groupedchat_win</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">],</span><span class="n">groupedchat_win</span><span class="p">[</span><span class="s1">&#39;NachrichtenProMinute&#39;</span><span class="p">]))</span>
@@ -13182,7 +13218,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[69]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[61]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13195,8 +13235,7 @@ a.anchor-link {
 </div>
 
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13207,7 +13246,7 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ccc</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">groupedchat_lose</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">],</span><span class="n">groupedchat_lose</span><span class="p">[</span><span class="s1">&#39;NachrichtenProMinute&#39;</span><span class="p">]))</span>
@@ -13221,7 +13260,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[71]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[62]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13234,8 +13277,7 @@ a.anchor-link {
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13243,8 +13285,7 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13254,13 +13295,11 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">corrtab</span> <span class="o">=</span> <span class="n">groupedchat_win</span><span class="p">[[</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;NachrichtenProMinute&#39;</span><span class="p">]]</span>
-<span class="n">corrtab</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">corrtab</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Radiant&#39;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">corrtab</span><span class="p">)</span>
-<span class="c1"># corrtab.corr()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">groupedchat_win</span><span class="p">[</span><span class="s1">&#39;TeamCodes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">groupedchat_win</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>
+<span class="n">groupedchat_win</span><span class="p">[[</span><span class="s1">&#39;NachrichtenProMinute&#39;</span><span class="p">,</span><span class="s1">&#39;TeamCodes&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -13271,132 +13310,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>       Team  NachrichtenProMinute
-0         1              0.480000
-3         1              0.092951
-5         1              0.132548
-7         1              0.252836
-8         1              0.095390
-10        1              0.114358
-12        1              0.310734
-14        1              0.515464
-17        1              0.479520
-19        1              0.344478
-20        1              0.153649
-23        1              0.237805
-25        1              0.045056
-26        1              0.318108
-28        1              0.381944
-31        1              0.172966
-33        1              0.253165
-34        1              0.157978
-37        1              0.787234
-38        1              0.107431
-40        1              0.341506
-42        1              0.802377
-44        1              0.392157
-46        1              0.087527
-49        1              0.221031
-50        1              0.074074
-52        1              0.200133
-55        1              0.056711
-56        1              0.436165
-59        1              0.566706
-...     ...                   ...
-99484     1              0.258878
-99486     1              0.442478
-99488     1              0.140562
-99490     1              0.202446
-99493     1              0.245148
-99495     1              0.418021
-99497     1              1.172366
-99498     1              0.708104
-99500     1              0.526976
-99503     1              0.496084
-99504     1              0.698690
-99507     1              0.118473
-99509     1              0.677638
-99510     1              0.262152
-99512     1              0.146270
-99515     1              0.030896
-99516     1              0.575934
-99518     1              0.191693
-99521     1              0.254237
-99523     1              0.964010
-99524     1              0.268156
-99526     1              0.187305
-99529     1              0.075973
-99531     1              0.298755
-99533     1              0.664122
-99534     1              0.396694
-99536     1              0.041351
-99538     1              0.067365
-99540     1              0.325645
-99543     1              0.473458
+<div class="output_area">
 
-[49772 rows x 2 columns]
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/robin/BDA/.py3/lib/python3.5/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Korrelation-zwischen-den-Nachrichten-pro-Minute-und-dem-Verlierer.">Korrelation zwischen den Nachrichten pro Minute und dem Verlierer.<a class="anchor-link" href="#Korrelation-zwischen-den-Nachrichten-pro-Minute-und-dem-Verlierer.">&#182;</a></h4>
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">corrtab</span> <span class="o">=</span> <span class="n">groupedchat_lose</span><span class="p">[[</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;NachrichtenProMinute&#39;</span><span class="p">]]</span>
-<span class="n">corrtab</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">corrtab</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Radiant&#39;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">corrtab</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
+<div class="prompt output_prompt">Out[63]:</div>
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/robin/BDA/.py3/lib/python3.5/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt output_prompt">Out[75]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -13418,12 +13336,108 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
     <tr style="text-align: right;">
       <th></th>
       <th>NachrichtenProMinute</th>
+      <th>TeamCodes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>NachrichtenProMinute</th>
-      <td>1.0</td>
+      <td>1.000000</td>
+      <td>-0.099684</td>
+    </tr>
+    <tr>
+      <th>TeamCodes</th>
+      <td>-0.099684</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Korrelation-zwischen-den-Nachrichten-pro-Minute-und-dem-Verlierer.">Korrelation zwischen den Nachrichten pro Minute und dem Verlierer.<a class="anchor-link" href="#Korrelation-zwischen-den-Nachrichten-pro-Minute-und-dem-Verlierer.">&#182;</a></h4>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">groupedchat_lose</span><span class="p">[</span><span class="s1">&#39;TeamCodes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">groupedchat_lose</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>
+<span class="n">groupedchat_lose</span><span class="p">[[</span><span class="s1">&#39;NachrichtenProMinute&#39;</span><span class="p">,</span><span class="s1">&#39;TeamCodes&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[64]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NachrichtenProMinute</th>
+      <th>TeamCodes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NachrichtenProMinute</th>
+      <td>1.00000</td>
+      <td>-0.07467</td>
+    </tr>
+    <tr>
+      <th>TeamCodes</th>
+      <td>-0.07467</td>
+      <td>1.00000</td>
     </tr>
   </tbody>
 </table>
@@ -13436,8 +13450,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13447,7 +13460,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Erstellen von gleichen Quantilen. Hier wird der volle Datensatz verwendet,</span>
@@ -13462,18 +13475,18 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Winrate-ab&#228;ngig-von-der-Anzahl-an-Nachrichten-pro-Minute">Winrate ab&#228;ngig von der Anzahl an Nachrichten pro Minute<a class="anchor-link" href="#Winrate-ab&#228;ngig-von-der-Anzahl-an-Nachrichten-pro-Minute">&#182;</a></h4>
 </div>
 </div>
-</div><div class="fragment">
+</div><aside class="notes">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Füge die zuvor erstellten Bereiche zu beiden Datensätzen hinzu</span>
@@ -13494,50 +13507,15 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/robin/BDA/.py3/lib/python3.5/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  
-/home/robin/BDA/.py3/lib/python3.5/site-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  This is separate from the ipykernel package so we can avoid doing imports until
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Diagramm">Diagramm<a class="anchor-link" href="#Diagramm">&#182;</a></h4>
-</div>
-</div>
-</div><div class="fragment">
+</aside><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Erzeuge Barchart</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">11.69</span><span class="p">,</span><span class="mf">4.27</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">groupedquantile</span><span class="o">.</span><span class="n">Bereiche</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">groupedquantile</span><span class="o">.</span><span class="n">Winrate</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nachrichten pro 10 Minuten (Oberlimit)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Gemeinsamer Datensatz aus beiden getrennten Datensätzen</span>
+<span class="n">groupedquantile</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -13548,181 +13526,300 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[82]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[72]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GewonneneSpiele</th>
+      <th>VerloreneSpiele</th>
+      <th>GespielteSpiele</th>
+      <th>Winrate</th>
+      <th>Bereiche</th>
+    </tr>
+    <tr>
+      <th>BereicheNachrichtenProMinute</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.033370</th>
+      <td>1082</td>
+      <td>1846</td>
+      <td>2928</td>
+      <td>0.369536</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>0.054299</th>
+      <td>1192</td>
+      <td>1577</td>
+      <td>2769</td>
+      <td>0.430480</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>0.071830</th>
+      <td>1230</td>
+      <td>1502</td>
+      <td>2732</td>
+      <td>0.450220</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>0.090000</th>
+      <td>1216</td>
+      <td>1391</td>
+      <td>2607</td>
+      <td>0.466437</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>0.108784</th>
+      <td>1269</td>
+      <td>1269</td>
+      <td>2538</td>
+      <td>0.500000</td>
+      <td>1.1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Diagramm">Diagramm<a class="anchor-link" href="#Diagramm">&#182;</a></h4>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Erzeuge Barchart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">11.69</span><span class="p">,</span><span class="mf">4.27</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">groupedquantile</span><span class="o">.</span><span class="n">Bereiche</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">groupedquantile</span><span class="o">.</span><span class="n">Winrate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nachrichten pro 10 Minuten (Oberlimit)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Winrate&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[74]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7fc45335ae48&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x7fe9b8f517f0&gt;</pre>
 </div>
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,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
-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
-JUmS1Hj/Hzk1F4VzkF79AAAAAElFTkSuQmCC
+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
+YII=
 "
 >
 </div>
@@ -13733,8 +13830,7 @@ JUmS1Hj/Hzk1F4VzkF79AAAAAElFTkSuQmCC
 </div>
 
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13743,8 +13839,7 @@ JUmS1Hj/Hzk1F4VzkF79AAAAAElFTkSuQmCC
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13754,21 +13849,11 @@ JUmS1Hj/Hzk1F4VzkF79AAAAAElFTkSuQmCC
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Füge die zuvor erstellten Bereiche zu beiden Datensätzen hinzu</span>
-<span class="n">groupedchat_win</span><span class="p">[</span><span class="s1">&#39;BereicheZeichenProMinute&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">groupedchat_win</span><span class="p">[</span><span class="s1">&#39;ZeichenProMinute&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">quantile_zeichen</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">quantile_zeichen</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="n">groupedchat_lose</span><span class="p">[</span><span class="s1">&#39;BereicheZeichenProMinute&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">groupedchat_lose</span><span class="p">[</span><span class="s1">&#39;ZeichenProMinute&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">quantile_zeichen</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">quantile_zeichen</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="c1"># Füge beide Datensätze zu einem gruppierten Datensatz zusammen</span>
-<span class="n">groupedquantile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">groupedchat_win</span><span class="p">[[</span><span class="s1">&#39;BereicheZeichenProMinute&#39;</span><span class="p">,</span> <span class="s1">&#39;Team&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Team&#39;</span><span class="p">:{</span><span class="s1">&#39;Radiant&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Dire&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}})</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;BereicheZeichenProMinute&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="n">groupedquantile</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GewonneneSpiele&#39;</span><span class="p">]</span>
-<span class="n">groupedquantile</span><span class="p">[</span><span class="s1">&#39;VerloreneSpiele&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">groupedchat_lose</span><span class="p">[[</span><span class="s1">&#39;BereicheZeichenProMinute&#39;</span><span class="p">,</span> <span class="s1">&#39;Team&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Team&#39;</span><span class="p">:{</span><span class="s1">&#39;Radiant&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Dire&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}})</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;BereicheZeichenProMinute&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="c1"># Erstelle die Gesamtanzahl an Spielen für jeden Bereich</span>
-<span class="n">groupedquantile</span><span class="p">[</span><span class="s1">&#39;GespielteSpiele&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">groupedquantile</span><span class="o">.</span><span class="n">GewonneneSpiele</span> <span class="o">+</span> <span class="n">groupedquantile</span><span class="o">.</span><span class="n">VerloreneSpiele</span>
-<span class="c1"># Berechnung der Winrate pro Bereich</span>
-<span class="n">groupedquantile</span><span class="p">[</span><span class="s1">&#39;Winrate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">groupedquantile</span><span class="o">.</span><span class="n">GewonneneSpiele</span><span class="o">/</span><span class="n">groupedquantile</span><span class="o">.</span><span class="n">GespielteSpiele</span>
-<span class="n">groupedquantile</span><span class="p">[</span><span class="s1">&#39;Bereiche&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">groupedquantile</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Gemeinsamer Datensatz aus beiden getrennten Datensätzen</span>
+<span class="n">groupedquantile</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -13779,30 +13864,99 @@ JUmS1Hj/Hzk1F4VzkF79AAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/robin/BDA/.py3/lib/python3.5/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
+<div class="output_area">
 
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  
-/home/robin/BDA/.py3/lib/python3.5/site-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
+<div class="prompt output_prompt">Out[76]:</div>
 
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  This is separate from the ipykernel package so we can avoid doing imports until
-</pre>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GewonneneSpiele</th>
+      <th>VerloreneSpiele</th>
+      <th>GespielteSpiele</th>
+      <th>Winrate</th>
+      <th>Bereiche</th>
+    </tr>
+    <tr>
+      <th>BereicheZeichenProMinute</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.131527</th>
+      <td>1177</td>
+      <td>1661</td>
+      <td>2838</td>
+      <td>0.414729</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>0.264550</th>
+      <td>1263</td>
+      <td>1388</td>
+      <td>2651</td>
+      <td>0.476424</td>
+      <td>2.6</td>
+    </tr>
+    <tr>
+      <th>0.419720</th>
+      <td>1295</td>
+      <td>1349</td>
+      <td>2644</td>
+      <td>0.489788</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>0.590674</th>
+      <td>1281</td>
+      <td>1239</td>
+      <td>2520</td>
+      <td>0.508333</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th>0.771272</th>
+      <td>1304</td>
+      <td>1234</td>
+      <td>2538</td>
+      <td>0.513790</td>
+      <td>7.7</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13812,7 +13966,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="prompt input_prompt">In&nbsp;[125]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Erzeuge Barchart</span>
@@ -13829,16 +13983,24 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[85]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[125]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7fc45721b208&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x7fc45af54dd8&gt;</pre>
 </div>
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -14031,8 +14193,7 @@ ktR4/x+Pz+ej5IZS2gAAAABJRU5ErkJggg==
 </div>
 
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
