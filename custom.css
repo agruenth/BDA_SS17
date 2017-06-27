@@ -5,7 +5,7 @@ background-image:url('Images/background.jpg');
 background-repeat:no-repeat;
 background-position: right bottom;
 color: white; !important*/
-background-color: black;
+background-color: #666;
 }
 .fullscreen-bg {
     position: fixed;
@@ -18,11 +18,11 @@ background-color: black;
 }
 
 .fullscreen-bg__video {
-	opacity:0.3;
+	opacity:0.6;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    height: 100%;
 }
 
 div.reveal.linear{
@@ -36,3 +36,10 @@ div.output_html table{
 div.output_png img{
 	background-color:white;
 }
+
+div.output_subarea pre{
+    background-color: rgba(100,100,100,0.5);
+    }
+.highlight span.nn,.highlight span.nf{
+    color:#2220FF;
+    }
